@@ -28,11 +28,9 @@ class _MainScreenState extends State<MainScreen> {
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => ProfileScreen()),
                   );
-                }      else   if (result == 'logout') {
+                } else if (result == 'logout') {
                   _logout(context);
                 }
-
-
               },
               itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
                 const PopupMenuItem<String>(
@@ -43,7 +41,6 @@ class _MainScreenState extends State<MainScreen> {
                   value: 'logout',
                   child: Text('Logout'),
                 ),
-
               ],
             ),
           ],
@@ -66,9 +63,12 @@ class _MainScreenState extends State<MainScreen> {
                       padding: const EdgeInsets.all(20),
                       textStyle: const TextStyle(fontSize: 20),
                     ),
-                    onPressed: () {   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => ProfileScreen()),
-                    );},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => ProfileScreen()),
+                      );
+                    },
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton.icon(
@@ -84,11 +84,11 @@ class _MainScreenState extends State<MainScreen> {
                       textStyle: const TextStyle(fontSize: 20),
                     ),
                     onPressed: () {
-                      //TODO: Add Sensor Permissions
                       Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => SensorPermissionView()),
-                    );
-                      },
+                        MaterialPageRoute(
+                            builder: (context) => SensorPermissionView()),
+                      );
+                    },
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton.icon(
@@ -103,9 +103,11 @@ class _MainScreenState extends State<MainScreen> {
                           horizontal: 40, vertical: 20),
                       textStyle: const TextStyle(fontSize: 20),
                     ),
-                    onPressed: () {   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => ScoresScreen()),
-                    );},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => ScoresScreen()),
+                      );
+                    },
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton.icon(
@@ -120,9 +122,12 @@ class _MainScreenState extends State<MainScreen> {
                           horizontal: 40, vertical: 20),
                       textStyle: const TextStyle(fontSize: 20),
                     ),
-                    onPressed: () {   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => InsightsWebView()),
-                    );},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => InsightsWebView()),
+                      );
+                    },
                   ),
                 ]),
           ),
