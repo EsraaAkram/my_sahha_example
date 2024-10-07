@@ -5,14 +5,21 @@ import 'package:selectpicker/selectpicker.dart';
 import 'package:selectpicker/styles/input_style.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ProfileView extends StatefulWidget {
-  const ProfileView({Key? key}) : super(key: key);
+import 'MainScreen.dart';
+
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({
+    super.key,
+    // required this.fromLogin
+  });
+
+  // final bool fromLogin;
 
   @override
-  ProfileState createState() => ProfileState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class ProfileState extends State<ProfileView> {
+class _ProfileScreenState extends State<ProfileScreen> {
   TextEditingController ageController = TextEditingController();
   String ageString = '';
   int age = 0;
@@ -58,7 +65,11 @@ class ProfileState extends State<ProfileView> {
       var demographic = {'age': int.tryParse(ageString), 'gender': gender};
       SahhaFlutter.postDemographic(demographic).then((success) {
         debugPrint(success.toString());
-        showAlertDialog(context, "SAVE", success.toString());
+        //showAlertDialog(context, "SAVE", success.toString());
+
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => MainScreen()),
+            (Route<dynamic> route) => false);
       }).catchError((error, stackTrace) {
         debugPrint(error.toString());
         showAlertDialog(context, "SAVE", error.toString());
@@ -101,9 +112,11 @@ class ProfileState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
+      resizeToAvoidBottomInset: true,
+
+      // appBar: AppBar(
+      //   title: const Text('Profile'),
+      // ),
       body: Padding(
         padding: const EdgeInsets.all(40),
         child: Center(
@@ -162,6 +175,10 @@ class ProfileState extends State<ProfileView> {
                 child: const Text('SAVE'),
               ),
               const SizedBox(height: 40),
+              // widget.fromLogin
+              //     ? Container()
+              //     :
+
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(40),

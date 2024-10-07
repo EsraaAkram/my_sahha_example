@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:sahha_flutter/sahha_flutter.dart';
 
 import 'package:webview_flutter/webview_flutter.dart';
@@ -7,14 +8,14 @@ import 'package:webview_flutter_android/webview_flutter_android.dart';
 // Import for iOS features.
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
-class WebView extends StatefulWidget {
-  const WebView({Key? key}) : super(key: key);
+class InsightsWebView extends StatefulWidget {
+  const InsightsWebView({super.key});
 
   @override
-  WebState createState() => WebState();
+  State<InsightsWebView> createState() => _InsightsWebViewState();
 }
 
-class WebState extends State<WebView> {
+class _InsightsWebViewState extends State<InsightsWebView> {
   late final WebViewController _controller;
 
   @override
@@ -33,7 +34,7 @@ class WebState extends State<WebView> {
     }
 
     final WebViewController controller =
-        WebViewController.fromPlatformCreationParams(params);
+    WebViewController.fromPlatformCreationParams(params);
 
     controller
       ..setJavaScriptMode(JavaScriptMode.unrestricted)

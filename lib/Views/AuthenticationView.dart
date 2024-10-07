@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sahha_flutter/sahha_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Constants.dart';
+
 class AuthenticationView extends StatefulWidget {
   const AuthenticationView({Key? key}) : super(key: key);
 
@@ -13,9 +15,9 @@ class AuthenticationState extends State<AuthenticationView> {
   TextEditingController appIdController = TextEditingController();
   TextEditingController appSecretController = TextEditingController();
   TextEditingController externalIdController = TextEditingController();
-  String appId = 'DU6jl7X1ZObD3bpSxJl0nOa6fHZ6dnfb';
-  String appSecret = 'CPdF2zmD08I93DDwvWRKjPrpJhRgqRndByvJixruHFS2qu8H7u88tMRp9h3zfVD2';
-  String externalId = '123e4567-e89b-12d3-a456-426614174000';//
+  // String appId = 'DU6jl7X1ZObD3bpSxJl0nOa6fHZ6dnfb';
+  // String appSecret = 'CPdF2zmD08I93DDwvWRKjPrpJhRgqRndByvJixruHFS2qu8H7u88tMRp9h3zfVD2';
+  // String externalId = '123e4567-e89b-12d3-a456-426614174000';//
 
   @override
   void initState() {
@@ -60,7 +62,7 @@ class AuthenticationState extends State<AuthenticationView> {
           context, 'MISSING INFO', "You need to input an EXTERNAL ID");
     } else {
       SahhaFlutter.authenticate(
-              appId: appId, appSecret: appSecret, externalId: externalId)
+          appId: appId, appSecret: appSecret, externalId: externalId)
           .then((success) {
         showAlertDialog(context, 'AUTHENTICATED', success.toString());
         setPrefs();
@@ -145,7 +147,7 @@ class AuthenticationState extends State<AuthenticationView> {
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(40),
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                  const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                   textStyle: const TextStyle(fontSize: 16),
                 ),
                 onPressed: () {
@@ -158,7 +160,7 @@ class AuthenticationState extends State<AuthenticationView> {
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(40),
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                  const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                   textStyle: const TextStyle(fontSize: 16),
                 ),
                 onPressed: () {
@@ -171,7 +173,7 @@ class AuthenticationState extends State<AuthenticationView> {
                     });
                     setPrefs();
                   }).catchError(
-                      (error, stackTrace) => {debugPrint(error.toString())});
+                          (error, stackTrace) => {debugPrint(error.toString())});
                 },
                 child: const Text('DEAUTHENTICATE'),
               ),
