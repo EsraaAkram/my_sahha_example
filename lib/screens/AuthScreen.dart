@@ -13,7 +13,7 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  final _externalIdController = TextEditingController();
+  final _externalIdController = TextEditingController(text: externalId);
 
   void _authenticate() {
     String externalId = _externalIdController.text;
